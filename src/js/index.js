@@ -22,4 +22,9 @@ const displayPhotoData = async function(data) {
     }
 }
 
-fetchPhotoData()
+const handleClickEvent = function(evt) {
+    let target = evt.target;
+    console.log(target)
+}
+
+fetchPhotoData().then(document.addEventListener('click', handleClickEvent))
