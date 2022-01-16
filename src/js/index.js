@@ -14,7 +14,7 @@ const displayPhotoData = async function(data) {
             <img src="${data[i].img_src}" alt="${data[i].camera.full_name}">
             <h2>${data[i].rover.name} Rover - ${data[i].camera.full_name}</h2>
             <p>${data[i].earth_date}</p>
-            <button class="like-photo-${i}">Like</button>
+            <button class="like-btn">Like</button>
             <button class="share-photo-${i}">Share</button>
         </div>
         `
@@ -24,7 +24,19 @@ const displayPhotoData = async function(data) {
 
 const handleClickEvent = function(evt) {
     let target = evt.target;
-    console.log(target)
+    if (target.classList.contains('like-btn')) {
+        likePhoto(target)
+    }
+    // console.log(target)
 }
 
-fetchPhotoData().then(document.addEventListener('click', handleClickEvent))
+const likePhoto = function(target) {
+    if (target.innerText == "Like") {
+        target.innerText = "Unlike";
+    } else {
+        target.innerText = "Like";
+    }
+}
+
+fetchPhotoData()
+.then(document.addEventListener('click', handleClickEvent))
