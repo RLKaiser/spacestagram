@@ -10,12 +10,13 @@ const fetchPhotoData = async function() {
 const displayPhotoData = async function(data) {
     for (let i = 0; i < data.length; i++) {
         let template = `
-        <div class="photo-card">
+        <div class="photo-card-${i}">
             <img src="${data[i].img_src}" alt="${data[i].camera.full_name}">
             <h2>${data[i].rover.name} Rover - ${data[i].camera.full_name}</h2>
             <p>${data[i].earth_date}</p>
             <button class="like-btn">Like</button>
-            <button class="share-photo-${i}">Share</button>
+            <button class="share-btn share-photo-${i}">Share</button>
+            <p class="copied-url"></p>
         </div>
         `
         document.querySelector('main').insertAdjacentHTML('afterbegin', template); 
@@ -27,7 +28,10 @@ const handleClickEvent = function(evt) {
     if (target.classList.contains('like-btn')) {
         likePhoto(target)
     }
-    // console.log(target)
+
+    if (target.classList.contains('share-btn')) {
+        sharePhoto(target)
+    }
 }
 
 const likePhoto = function(target) {
@@ -36,6 +40,17 @@ const likePhoto = function(target) {
     } else {
         target.innerText = "Like";
     }
+}
+
+const sharePhoto = function(target) {
+    let photoIndex = target.classList[1][12];
+    let photoCard = document.querySelector(`.photo-card-${photoIndex}`)
+    let imgUrl = photoCard.children[0].src;
+    navigator.clipboard.writeText(imgUrl).then(function() {
+        let copiedUrl = photoCard.children[5];
+        copiedUrl.innerText = "URL Copied to Clipboard";
+        setTimeout(() => { copiedUrl.innerText = "" }, 4000);
+    })
 }
 
 fetchPhotoData()
