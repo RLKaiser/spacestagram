@@ -73,10 +73,13 @@ button {
   border: 1px solid #94a3b8;
   border-radius: 0.125rem;
 }
+button:hover {
+  background-color: #e2e8f0;
+  cursor: pointer;
+}
 
 .card {
   margin-bottom: 1rem;
-  border: 1px solid #e2e8f0;
 }
 .card img {
   border-radius: 0.25rem 0.2rem 0 0;

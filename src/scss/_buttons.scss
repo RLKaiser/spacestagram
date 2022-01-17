@@ -3,4 +3,8 @@ button {
     background-color: #f8fafc;
     border: 1px solid #94a3b8;
     border-radius: 0.125rem;
+    &:hover {
+        background-color: #e2e8f0;
+        cursor: pointer;
+    }
 }
