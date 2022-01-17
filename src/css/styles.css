@@ -74,4 +74,40 @@ button {
   border-radius: 0.125rem;
 }
 
+.card {
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+}
+.card img {
+  border-radius: 0.25rem 0.2rem 0 0;
+}
+.card .card-content {
+  border-radius: 0 0 0.25rem 0.25rem;
+  background-color: #f8fafc;
+  padding: 1rem;
+}
+.card .card-content .date {
+  margin-bottom: 2rem;
+}
+.card .card-content .flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card .card-content .flex .copied-url {
+  color: #0284c7;
+}
+
+body {
+  background-color: #e2e8f0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header,
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
 /*# sourceMappingURL=styles.css.map */
