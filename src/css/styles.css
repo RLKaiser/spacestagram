@@ -67,4 +67,11 @@ select {
   font: inherit;
 }
 
+button {
+  padding: 0.25rem 0.5rem;
+  background-color: #f8fafc;
+  border: 1px solid #94a3b8;
+  border-radius: 0.125rem;
+}
+
 /*# sourceMappingURL=styles.css.map */
