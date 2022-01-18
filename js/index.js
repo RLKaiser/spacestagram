@@ -69,13 +69,14 @@ const likePhoto = function(target) {
 
 const sharePhoto = function(target) {
     let photoIndex = target.classList[1][12];
-    let photoCard = document.querySelector(`.photo-card-${photoIndex}`)
+    let photoCard = document.querySelector(`.photo-card-${photoIndex}`);
     let imgUrl = photoCard.children[0].src;
-    navigator.clipboard.writeText(imgUrl).then(function() {
-        let copiedUrl = photoCard.children[1].children[2].children[2];
-        copiedUrl.innerText = "Copied URL to Clipboard";
-        setTimeout(() => { copiedUrl.innerText = "" }, 4000);
-    })
+    
+    // navigator.clipboard.writeText(imgUrl).then(function() {
+    //     let copiedUrl = photoCard.children[1].children[2].children[2];
+    //     copiedUrl.innerText = "Copied URL to Clipboard";
+    //     setTimeout(() => { copiedUrl.innerText = "" }, 4000);
+    // })
 }
 
 skeletonTemplate()
