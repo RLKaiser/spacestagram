@@ -21,12 +21,11 @@ const fetchPhotoData = async function() {
     const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=1dqCkXhcDym7QqNzSb1hpgOjBndEiaOaoD7y2IwJ';
     const res = await fetch(url);
     const data = await res.json();
-    const spacePhotos = data.photos;
-
-    displayPhotoData(spacePhotos)
+    return data
 }
 
-const displayPhotoData = async function(data) {
+const displayPhotoData = async function(photoData) {
+    let data = photoData.photos;
     document.querySelector('main').innerHTML = '';
 
     for (let i = 0; i < data.length; i++) {
@@ -74,10 +73,11 @@ const sharePhoto = function(target) {
     navigator.clipboard.writeText(imgUrl).then(function() {
         let copiedUrl = photoCard.children[1].children[2].children[2];
         copiedUrl.innerText = "Copied URL to Clipboard";
-        setTimeout(() => { copiedUrl.innerText = "" }, 4000);
+        setTimeout(() => { copiedUrl.innerText = "" }, 1500);
     })
 }
 
 skeletonTemplate()
-.then(fetchPhotoData())
+.then(fetchPhotoData)
+.then(displayPhotoData)
 .then(document.addEventListener('click', handleClickEvent))

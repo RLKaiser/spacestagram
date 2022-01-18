@@ -45,7 +45,8 @@ ol[class] {
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-  text-decoration-skip-ink: auto;
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
 }
 
 /* Make images easier to work with */
@@ -102,7 +103,8 @@ button:hover {
 }
 
 .skeleton {
-  animation: skeleton-loading 1s linear infinite alternate;
+  -webkit-animation: skeleton-loading 1s linear infinite alternate;
+          animation: skeleton-loading 1s linear infinite alternate;
 }
 
 .skeleton-img {
@@ -127,6 +129,17 @@ button:hover {
   border-radius: 0.125rem;
 }
 
+@-webkit-keyframes skeleton-loading {
+  0% {
+    background-color: #f1f5f9;
+    opacity: 40%;
+  }
+  100% {
+    background-color: #f1f5f9;
+    opacity: 95%;
+  }
+}
+
 @keyframes skeleton-loading {
   0% {
     background-color: #f1f5f9;
@@ -144,7 +157,7 @@ body {
 
 header,
 main {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0.5rem;
 }
