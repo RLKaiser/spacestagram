@@ -1,3 +1,22 @@
+const skeletonTemplate = async function() {
+    let template = `
+        <div class="card">
+            <div class="skeleton skeleton-img"></div>
+            <div class="card-content">
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text skeleton-date"></div>
+                <div class="flex">
+                    <div class="skeleton skeleton-btn"></div>
+                    <div class="skeleton skeleton-btn"></div>
+                </div>
+            </div>
+        </div>
+    `
+    for (let i = 0; i < 4; i++) {
+        document.querySelector('main').insertAdjacentHTML('afterbegin', template); 
+    }
+}
+
 const fetchPhotoData = async function() {
     const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=1dqCkXhcDym7QqNzSb1hpgOjBndEiaOaoD7y2IwJ';
     const res = await fetch(url);
@@ -8,6 +27,8 @@ const fetchPhotoData = async function() {
 }
 
 const displayPhotoData = async function(data) {
+    document.querySelector('main').innerHTML = '';
+
     for (let i = 0; i < data.length; i++) {
         let template = `
         <div class="card photo-card-${i}">
@@ -57,5 +78,6 @@ const sharePhoto = function(target) {
     })
 }
 
-fetchPhotoData()
+skeletonTemplate()
+.then(fetchPhotoData())
 .then(document.addEventListener('click', handleClickEvent))
